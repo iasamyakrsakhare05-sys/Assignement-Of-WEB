@@ -25,6 +25,19 @@ const registerUser = async(req,res) => {
     }
 }
 
+const loginUser = async (req, res) => {
+    try{
+        const{email,password}=req.body;
+        const user = await User.findOne({
+            email: email.toLowerCase()
+        });
+        if(!user) return res.status(4000).json({
+            message: "User not found!"
+        });
+    } catch(error){
+
+    }
+}
 
 export {
     registerUser
