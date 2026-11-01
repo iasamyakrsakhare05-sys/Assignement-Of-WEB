@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "node Backend/src/index.js",
-    "dev": "nodemon -r dotenv/config Backend/src/index.js"
+    "dev": "nodemon --env-file=.env Backend/src/index.js"
   },
   "repository": {
     "type": "git",
