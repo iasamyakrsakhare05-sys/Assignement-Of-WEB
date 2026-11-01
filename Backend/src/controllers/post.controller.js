@@ -1,4 +1,4 @@
-import {Post} from ",,/models/post.models.js";
+import {Post} from "../models/post.models.js";
 
 const createPost = async(req, res) => {
     try{
@@ -19,6 +19,39 @@ const createPost = async(req, res) => {
     }
 }
 
+const getPosts = async(req,res) => {
+    try{
+        const posts = await Post.find();
+        res.status(200).json(posts);
+    }
+    catch (error){
+        res.status(500).json({
+            message:"Internal Server Error", error
+        });
+
+    }
+}
+
+
+const deletePost = async(req,res) => {
+    try{
+        const deleted = await Post.findByIdAndDelete(req.params.id);
+        if(!delted) return res.status(400).json({
+            message:"Post not found!"
+        });
+        res.status(200).json({
+            message: "Post deleted!"
+        })
+    }
+    catch (error){
+            res.status(500).json({
+            message:"Internal Server Error", error
+        });
+    }
+}
+
 export{
-    createPost
+    createPost,
+    getPosts,
+    deletePost
 }
