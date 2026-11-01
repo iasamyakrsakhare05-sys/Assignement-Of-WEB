@@ -2,7 +2,7 @@ import express from "express";
 
 const app = express();
 
-app.use(expressjson());
+app.use(express.json());
 
 import userRouter from './routes/user.route.js';
 
